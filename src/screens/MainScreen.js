@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text, Button, FlatList} from 'react-native';
 import {DATA} from '../data';
 import {Post} from '../components/Post';
+import {PostList} from '../components/PostList';
 
 export const MainScreen = ({navigation}) => {
 
@@ -10,26 +10,10 @@ export const MainScreen = ({navigation}) => {
   };
 
   const onRemove = () => {
-    console.log('delete');
+    alert('delete');
   };
 
-
-  return (
-    <View>
-      <FlatList
-        data={DATA}
-        keyExtractor={post => post.id.toString()}
-        renderItem={({item}) => <Post post={item} onPress={onPressHandler}/>}
-      />
-    </View>
-  );
+  return (<PostList DATA={DATA} onPress={onPressHandler}/>);
 };
 
 
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});

@@ -1,14 +1,12 @@
 import React from 'react';
-import {View, Text, Button} from 'react-native';
-
 import {createStackNavigator} from '@react-navigation/stack';
-import {MainScreen} from '../screens/MainScreen';
 import {AboutScreen} from '../screens/AboutScreen';
 import {CreateScreen} from '../screens/CreateScreen';
 import {PostScreen} from '../screens/PostScreen';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import {AppHeaderIcon} from '../components/AppHeaderIcon';
-
+import {THEME} from '../theme';
+import {TabNavigation} from './TabNavigation';
 
 const AppStack = createStackNavigator();
 
@@ -25,10 +23,9 @@ const HeaderButtonCreator = (icon, iconTitle, onPressHandler) => (<HeaderButtons
 export function AppNavigation() {
   return (
     <AppStack.Navigator
-      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#e05e28',
+          backgroundColor: THEME.MAIN_COLOR,
         },
         headerTintColor: '#ffffff',
         headerTitleStyle: {
@@ -37,8 +34,8 @@ export function AppNavigation() {
       }}
     >
       <AppStack.Screen
-        name="Home"
-        component={MainScreen}
+        name="TabNavigation"
+        component={TabNavigation}
         options={{
           title: 'Мой блог',
           headerRight: () => HeaderButtonCreator(
@@ -66,14 +63,16 @@ export function AppNavigation() {
       <AppStack.Screen
         name="Post"
         component={PostScreen}
-        options={({route}) => ({
+        options={({route, navigation}) => ({
           title: `${route.params.text}`,
           headerRight: route.params.booked
             ?
             () => HeaderButtonCreator(
               'ios-star',
               'ios-star',
-              () => alert('press star')
+              () => {
+                navigation.navigate('About');
+              }
             )
             :
             () => HeaderButtonCreator(

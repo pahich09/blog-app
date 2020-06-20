@@ -1,20 +1,19 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {DATA} from '../data';
+import {Post} from '../components/Post';
+import {PostList} from '../components/PostList';
 
-export const BookedScreen = () => {
-  return (
-    <View style={styles.center}>
-      <Text>
-        BookedScreen
-      </Text>
-    </View>
-  );
+export const BookedScreen = ({navigation}) => {
+
+  const onPressHandler = post => {
+    navigation.navigate('Post', {...post, onRemove});
+  };
+
+  const onRemove = () => {
+    alert('delete');
+  };
+
+  return (<PostList
+    DATA={DATA.filter(post => post.booked)}
+    onPress={onPressHandler}/>);
 };
-
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});

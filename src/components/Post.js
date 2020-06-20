@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
+import {THEME} from '../theme';
 
 export const Post = ({post, onPress}) => {
   return (
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   title: {
-    color: '#ffffff',
+    color: THEME.TEXT_COLOR,
     fontFamily: 'open-regular'
   }
 });

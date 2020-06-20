@@ -1,8 +1,9 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, Image, View, Button} from 'react-native';
+import {THEME} from '../theme';
 
 
-export const PostScreen = ({route, navigation}) => {
+export const PostScreen = ({route}) => {
   const {params: {text, img, onRemove}} = route;
 
   return (
@@ -19,7 +20,7 @@ export const PostScreen = ({route, navigation}) => {
       <View style={styles.buttonBlock}>
         <Button
           title='Удалить'
-          color={'red'}
+          color={THEME.DANGER_COLOR}
           onPress={onRemove}
         />
       </View>
