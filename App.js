@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {AppLoading} from 'expo';
 import {bootstrap} from './src/bootstrap';
-import {AppNavigation} from './src/navigation/AppNavigation';
+import {StackNavigation} from './src/navigation/StackNavigation';
+import {MainNavigation} from './src/navigation/MainNavigation';
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <AppNavigation/>
+      <MainNavigation/>
     </NavigationContainer>
   );
 }
