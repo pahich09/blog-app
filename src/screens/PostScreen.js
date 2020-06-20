@@ -1,20 +1,46 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {ScrollView, StyleSheet, Text, Image, View, Button} from 'react-native';
 
-export const PostScreen = () => {
+
+export const PostScreen = ({route, navigation}) => {
+  const {params: {text, img, onRemove}} = route;
+
   return (
-    <View style={styles.center}>
-      <Text>
-        PostScreen
-      </Text>
-    </View>
+    <ScrollView >
+      <Image
+        style={styles.image}
+        source={{uri: img}}
+      />
+      <View style={styles.textBox}>
+        <Text style={styles.text}>
+          {text}
+        </Text>
+      </View>
+      <View style={styles.buttonBlock}>
+        <Button
+          title='Удалить'
+          color={'red'}
+          onPress={onRemove}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+  image: {
+    width: '100%',
+    height: 200
+  },
+  textBox: {
+    alignItems: 'center',
+    paddingVertical: 10,
+  },
+  text: {
+    fontSize: 22,
+    fontFamily: 'open-regular'
+  },
+  buttonBlock: {
+
   }
 });

@@ -1,19 +1,30 @@
 import React from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import {View, StyleSheet, Text, Button, FlatList} from 'react-native';
+import {DATA} from '../data';
+import {Post} from '../components/Post';
 
 export const MainScreen = ({navigation}) => {
+
+  const onPressHandler = post => {
+    navigation.navigate('Post', {...post, onRemove});
+  };
+
+  const onRemove = () => {
+    console.log('delete');
+  };
+
+
   return (
-    <View style={styles.center}>
-      <Text>
-        MainScreen
-      </Text>
-      <Button
-        title="Go to about"
-        onPress={() => navigation.navigate('About')}
+    <View>
+      <FlatList
+        data={DATA}
+        keyExtractor={post => post.id.toString()}
+        renderItem={({item}) => <Post post={item} onPress={onPressHandler}/>}
       />
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   center: {
