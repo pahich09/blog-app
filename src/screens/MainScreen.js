@@ -1,19 +1,20 @@
-import React from 'react';
-import {DATA} from '../data';
-import {Post} from '../components/Post';
+import React, {useEffect} from 'react';
 import {PostList} from '../components/PostList';
+import {useDispatch, useSelector} from 'react-redux';
+import {loadPosts} from '../store/actions/postAction';
 
 export const MainScreen = ({navigation}) => {
 
-  const onPressHandler = post => {
-    navigation.navigate('Post', JSON.stringify({...post, onRemove}));
-  };
+  const dispatch = useDispatch();
 
-  const onRemove = () => {
-    alert('delete');
-  };
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, [dispatch]);
 
-  return (<PostList DATA={DATA} onPress={onPressHandler}/>);
+  const posts = useSelector(state => state.post.allPosts);
+  console.log(posts.length);
+
+  return (<PostList data={posts} navigation={navigation}/>);
 };
 
 

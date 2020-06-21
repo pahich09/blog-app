@@ -1,19 +1,13 @@
 import React from 'react';
-import {DATA} from '../data';
-import {Post} from '../components/Post';
 import {PostList} from '../components/PostList';
+import {useSelector} from 'react-redux';
 
 export const BookedScreen = ({navigation}) => {
 
-  const onPressHandler = post => {
-    navigation.navigate('Post', {...post, onRemove});
-  };
-
-  const onRemove = () => {
-    alert('delete');
-  };
+  const bookedPosts = useSelector(state => state.post.bookedPosts);
 
   return (<PostList
-    DATA={DATA.filter(post => post.booked)}
-    onPress={onPressHandler}/>);
+    navigation={navigation}
+    data={bookedPosts}
+  />);
 };

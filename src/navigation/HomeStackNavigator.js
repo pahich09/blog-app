@@ -3,11 +3,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {PostScreen} from '../screens/PostScreen';
 import {HeaderButtonIcon} from '../components/HeaderButtonIcon';
 import {THEME} from '../theme';
-import {TabNavigation} from './TabNavigation';
+import {TabNavigator} from './TabNavigator';
 
 const AppStack = createStackNavigator();
 
-export function StackNavigation() {
+export function HomeStackNavigator() {
   return (
     <AppStack.Navigator
       screenOptions={{
@@ -21,8 +21,8 @@ export function StackNavigation() {
       }}
     >
       <AppStack.Screen
-        name="TabNavigation"
-        component={TabNavigation}
+        name="TabNavigator"
+        component={TabNavigator}
         options={({navigation}) => ({
           title: 'Мой блог',
           headerRight: () => (<HeaderButtonIcon
@@ -41,30 +41,23 @@ export function StackNavigation() {
           />),
         })}
       />
+
       <AppStack.Screen
         name="Post"
         component={PostScreen}
-        options={({route: {params}, navigation}) => ({
-          title: `${JSON.parse(params).text}`,
-          headerRight: () => JSON.parse(params).booked
-            ?
+        options={({route: {params}}) => ({
+          title: params.title,
+          headerRight: () =>
             <HeaderButtonIcon
-              icon='ios-star'
+              icon={params.isBooked ? 'ios-star' : 'ios-star-outline'}
               iconTitle='Star'
               onPressHandler={() => {
-                alert('star');
-              }}
-            />
-            :
-            <HeaderButtonIcon
-              icon='ios-star-outline'
-              iconTitle='Star'
-              onPressHandler={() => {
-                alert('star');
+                params.toggleBookedHandler(params.id);
               }}
             />
         })}
       />
+
     </AppStack.Navigator>
   );
 }

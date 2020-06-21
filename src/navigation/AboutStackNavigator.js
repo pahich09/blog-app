@@ -33,6 +33,7 @@ export const AboutStackNavigator = () => {
           />),
         })}
       />
+
     </AppStack.Navigator>
   );
 };

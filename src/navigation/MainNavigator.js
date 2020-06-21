@@ -1,13 +1,13 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {StackNavigation} from './StackNavigation';
+import {HomeStackNavigator} from './HomeStackNavigator';
 import {AboutStackNavigator} from './AboutStackNavigator';
 import {CreateStackNavigator} from './CreateStackNavigator';
 import {THEME} from '../theme';
 
 const Drawer = createDrawerNavigator();
 
-export const MainNavigation = () => {
+export const MainNavigator = () => {
   return (
     <Drawer.Navigator
       drawerStyle={{
@@ -23,7 +23,7 @@ export const MainNavigation = () => {
     >
       <Drawer.Screen
         name="Home"
-        component={StackNavigation}
+        component={HomeStackNavigator}
         options={{drawerLabel: 'Главная'}}
       />
       <Drawer.Screen
