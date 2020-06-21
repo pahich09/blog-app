@@ -6,7 +6,7 @@ import {PostList} from '../components/PostList';
 export const MainScreen = ({navigation}) => {
 
   const onPressHandler = post => {
-    navigation.navigate('Post', {...post, onRemove});
+    navigation.navigate('Post', JSON.stringify({...post, onRemove}));
   };
 
   const onRemove = () => {

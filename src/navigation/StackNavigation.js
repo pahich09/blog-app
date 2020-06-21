@@ -44,9 +44,9 @@ export function StackNavigation() {
       <AppStack.Screen
         name="Post"
         component={PostScreen}
-        options={({route, navigation}) => ({
-          title: `${route.params.text}`,
-          headerRight: () => route.params.booked
+        options={({route: {params}, navigation}) => ({
+          title: `${JSON.parse(params).text}`,
+          headerRight: () => JSON.parse(params).booked
             ?
             <HeaderButtonIcon
               icon='ios-star'

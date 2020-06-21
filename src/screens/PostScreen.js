@@ -3,8 +3,8 @@ import {ScrollView, StyleSheet, Text, Image, View, Button} from 'react-native';
 import {THEME} from '../theme';
 
 
-export const PostScreen = ({route}) => {
-  const {params: {text, img, onRemove}} = route;
+export const PostScreen = ({route: {params}}) => {
+  const {text, img, onRemove} = JSON.parse(params);
 
   return (
     <ScrollView >
