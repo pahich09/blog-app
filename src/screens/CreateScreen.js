@@ -29,6 +29,7 @@ export const CreateScreen = ({navigation}) => {
     };
     dispatch(createPost(post));
     navigation.navigate('Home');
+    setText('');
   };
 
   const photoHandler = uri => {

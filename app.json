@@ -1,19 +1,18 @@
 {
   "expo": {
-    "name": "post-app",
+    "name": "Self Blog",
     "slug": "post-app",
+    "privacy": "public",
     "platforms": [
-      "ios",
       "android",
-      "web"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/rn-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/rn-splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#242832"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,7 +21,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pahich09dev.self-blog-rn",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.pahich09dev.self_blog_rn",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     }
   }
 }
