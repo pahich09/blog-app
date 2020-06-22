@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Image, View, StyleSheet, Alert} from 'react-native';
+import {Alert, Button, Image, StyleSheet, View} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 
@@ -30,9 +30,8 @@ export const PhotoPicker = ({onPick}) => {
       aspect: [16, 9],
       quality: 1,
     });
-
     setImage(img.uri);
-    onPick(img.uri)
+    onPick(img.uri);
   };
 
   return (

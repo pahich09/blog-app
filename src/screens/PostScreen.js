@@ -21,17 +21,17 @@ export const PostScreen = ({route: {params: {id}}, navigation}) => {
     dispatch(removePost(id));
   };
 
-  const toggleBookedHandler = id => {
-    dispatch(toggleBooked(id));
+  const toggleBookedHandler = post => {
+    dispatch(toggleBooked(post));
   };
 
   useEffect(() => {
     navigation.setParams({
       toggleBookedHandler,
-      date: post.date,
-      id: post.id
+      post
     });
-  }, []);
+  }, [post]);
+
 
   useEffect(() => {
     post && navigation.setParams({

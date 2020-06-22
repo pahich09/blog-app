@@ -11,15 +11,22 @@ export const loadPosts = () => async dispatch => {
   });
 };
 
-export const toggleBooked = id => ({
-  type: TOGGLE_BOOKED,
-  payload: id
-});
+export const toggleBooked = post => async dispatch => {
+  await DB.updatePost(post);
 
-export const removePost = id => ({
-  type: REMOVE_POST,
-  payload: id
-});
+  dispatch({
+    type: TOGGLE_BOOKED,
+    payload: post.id
+  });
+};
+
+export const removePost = id => async dispatch => {
+  await DB.removePost(id);
+  dispatch({
+    type: REMOVE_POST,
+    payload: id
+  });
+};
 
 export const createPost = post => async dispatch => {
   const fileName = post.img.split('/').pop();

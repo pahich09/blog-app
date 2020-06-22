@@ -23,7 +23,7 @@ export const AboutStackNavigator = () => {
         name="About"
         component={AboutScreen}
         options={({navigation}) => ({
-          title: 'About',
+          title: 'Информация',
           headerLeft: () => (<HeaderButtonIcon
             icon='ios-menu'
             iconTitle='Menu'

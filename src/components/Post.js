@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  View,
-  Text,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import {THEME} from '../theme';
 

@@ -46,18 +46,18 @@ export function HomeStackNavigator() {
         name="Post"
         component={PostScreen}
         options={({route: {params}}) => ({
-          title: `Пост от ${new Date(params.date).toLocaleDateString()}`,
+          title: params.post?.date
+            ?
+            `Пост от ${new Date(params.post?.date).toLocaleDateString()}`
+            : '',
           headerRight: () =>
             <HeaderButtonIcon
               icon={params.isBooked ? 'ios-star' : 'ios-star-outline'}
               iconTitle='Star'
-              onPressHandler={() => {
-                params.toggleBookedHandler(params.id);
-              }}
+              onPressHandler={() => params.toggleBookedHandler(params.post)}
             />
         })}
       />
-
     </AppStack.Navigator>
   );
 }

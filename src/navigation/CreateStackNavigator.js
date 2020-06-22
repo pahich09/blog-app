@@ -23,7 +23,7 @@ export const CreateStackNavigator = () => {
         name="Create"
         component={CreateScreen}
         options={({navigation}) => ({
-          title: 'Create',
+          title: 'Новый пост',
           headerLeft: () => (<HeaderButtonIcon
             icon='ios-menu'
             iconTitle='Menu'
