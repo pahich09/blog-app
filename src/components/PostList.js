@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {Post} from './Post';
 
 export const PostList = ({data, navigation}) => {
@@ -9,6 +9,16 @@ export const PostList = ({data, navigation}) => {
       id: post.id
     });
   };
+
+  if (!data.length) {
+    return (
+      <View style={styles.wrap}>
+        <Text style={styles.noPosts}>
+          Постов пока нет...
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.wrap}>
@@ -24,5 +34,11 @@ export const PostList = ({data, navigation}) => {
 const styles = StyleSheet.create({
   wrap: {
     padding: 10
+  },
+  noPosts: {
+    marginTop: 20,
+    textAlign: 'center',
+    fontSize: 20,
+    fontFamily: 'open-regular',
   }
 });

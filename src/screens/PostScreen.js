@@ -28,7 +28,7 @@ export const PostScreen = ({route: {params: {id}}, navigation}) => {
   useEffect(() => {
     navigation.setParams({
       toggleBookedHandler,
-      title: post.text,
+      date: post.date,
       id: post.id
     });
   }, []);

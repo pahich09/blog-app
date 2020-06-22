@@ -46,7 +46,7 @@ export function HomeStackNavigator() {
         name="Post"
         component={PostScreen}
         options={({route: {params}}) => ({
-          title: params.title,
+          title: `Пост от ${new Date(params.date).toLocaleDateString()}`,
           headerRight: () =>
             <HeaderButtonIcon
               icon={params.isBooked ? 'ios-star' : 'ios-star-outline'}

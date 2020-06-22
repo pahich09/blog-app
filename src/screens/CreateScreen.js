@@ -1,25 +1,24 @@
 import React, {useState} from 'react';
 import {
+  Button,
+  Keyboard,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  Image,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Button
+  TouchableWithoutFeedback
 } from 'react-native';
 import {THEME} from '../theme';
 import {useDispatch} from 'react-redux';
 import {createPost} from '../store/actions/postAction';
+import {PhotoPicker} from '../components/PhotoPicker';
 
 
 export const CreateScreen = ({navigation}) => {
 
   const [text, setText] = useState('');
   const dispatch = useDispatch();
-
-  const img = 'https://cdn.londonandpartners.com/visit/general-london/areas/river/76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg';
+  const [img, setImg] = useState(null);
 
   const onPressHandler = () => {
     const post = {
@@ -29,7 +28,11 @@ export const CreateScreen = ({navigation}) => {
       booked: false
     };
     dispatch(createPost(post));
-    navigation.navigate('Home')
+    navigation.navigate('Home');
+  };
+
+  const photoHandler = uri => {
+    setImg(uri);
   };
 
   return (
@@ -45,16 +48,11 @@ export const CreateScreen = ({navigation}) => {
                    onChangeText={setText}
                    multiline
         />
-        <Image
-          style={{
-            width: '100%',
-            height: 200
-          }}
-          source={{uri: 'https://cdn.londonandpartners.com/visit/general-london/areas/river/76709-640x360-houses-of-parliament-and-london-eye-on-thames-from-above-640.jpg'}}/>
-
+        <PhotoPicker onPick={photoHandler}/>
         <Button title='Сохранить'
                 color={THEME.MAIN_COLOR}
                 onPress={onPressHandler}
+                disabled={!text || !img}
         />
       </ScrollView>
     </TouchableWithoutFeedback>

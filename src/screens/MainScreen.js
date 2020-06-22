@@ -12,7 +12,6 @@ export const MainScreen = ({navigation}) => {
   }, [dispatch]);
 
   const posts = useSelector(state => state.post.allPosts);
-  console.log(posts.length);
 
   return (<PostList data={posts} navigation={navigation}/>);
 };
